@@ -9,7 +9,7 @@ $target_allocations = @{
     "Bonds"=@{ "FTBFX"=.2 };
     "REIT"=@{ "FSRNX"=.08 };
     "Cash"=@{ "SPAXX**"=.1 };
-    "Fun Stocks"=@{ "TSLA"=.1 };
+    "Fun Stocks"=@{ "TSLA"=0 };
 }
 
 # Flatten the list of stocks -> allocation percentages
@@ -25,10 +25,13 @@ foreach ($bucket in $target_allocations.Keys) {
     }
 }
 
-$rounded = [System.Math]::Round($sanity_sum)
+# Have seen floating point errors so round to nearest .001
+$rounded = [System.Math]::Round($sanity_sum, 3)
 if ($rounded -ne 1) {
     write-host ("Your target allocations sum to {0}!" -f $sanity_sum) -ForegroundColor Red
     exit
+} else {
+    write-host "Your targe allocations sum to 1."
 }
 
 $csv = import-csv "$filename"
