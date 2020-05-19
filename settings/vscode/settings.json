@@ -1,0 +1,74 @@
+{
+  "[json]": {
+    "editor.tabSize": 2,
+  },
+  "[markdown]": {
+    "editor.rulers": [
+      120
+    ]
+  },
+  "editor.minimap.enabled": false,
+  "editor.tokenColorCustomizations": {
+    "[Gruvbox Dark (Hard)]": {
+      "textMateRules": [
+        {
+          "scope": "support.type.property-name",
+          "settings": {
+            "foreground": "#fabd2f"
+          }
+        },
+        {
+          "scope": "storage.type",
+          "settings": {
+            "foreground": "#fabd2f"
+          }
+        }
+        /*
+        {
+          "scope": "entity.name.function",
+          "settings": {
+            "foreground": "#fabd2f"
+          }
+        },
+        {
+          "scope": "entity.name.tag",
+          "settings": {
+            "foreground": "#b8bb26"
+          }
+        },
+        {
+          "scope": "storage.type",
+          "settings": {
+            "foreground": "#8ec07c"
+          }
+        }*/
+      ]
+    }
+  },
+  "extensions.ignoreRecommendations": false,
+  "git.autofetch": true,
+  "git.enableSmartCommit": true,
+  "terminal.integrated.commandsToSkipShell": [
+    "workbench.action.toggleSidebarVisibility",
+    "workbench.action.toggleTerminal"
+  ],
+  "vim.foldfix": true,
+  "vim.leader": ",",
+  "vim.vimrc.enable": true,
+  "vim.vimrc.path": "C:\\Users\\matur\\_vimrc",
+  "vim.normalModeKeyBindings": [
+    {
+      "before": [ "<leader>", "p" ],
+      "commands": [ "workbench.action.keepEditor" ]
+    },
+    {
+      "before": [ "<leader>", "f" ],
+      "commands": [ "editor.toggleFold" ]
+    }
+  ],
+  "workbench.colorTheme": "Gruvbox Dark (Hard)",
+  "workbench.list.automaticKeyboardNavigation": false,
+  "terminal.integrated.shell.windows": "C:\\Program Files\\Git\\bin\\bash.exe",
+  "window.zoomLevel": 0,
+  "diffEditor.ignoreTrimWhitespace": false,
+}
