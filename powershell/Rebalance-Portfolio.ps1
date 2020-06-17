@@ -4,12 +4,11 @@ param (
 
 # Define the desired stock allocation
 $target_allocations = @{
-    "US Stocks"=@{ "FZROX"=.32; };
-    "International Stocks"=@{ "FZILX"=.2; };
-    "Bonds"=@{ "FTBFX"=.2 };
-    "REIT"=@{ "FSRNX"=.08 };
-    "Cash"=@{ "SPAXX**"=.1 };
-    "Fun Stocks"=@{ "TSLA"=0 };
+    "US Stocks"=@{ "FXAIX"=.26; };
+    "International Stocks"=@{ "FZILX"=.1; };
+    "Bonds"=@{ "FTBFX"=.15; "FNBGX"=.2 };
+    "Cash"=@{ "SPAXX**"=0 };
+	"MSFT"=@{ "MSFT"=.29 };
 }
 
 # Flatten the list of stocks -> allocation percentages
@@ -45,7 +44,12 @@ $total_portfolio_value = ($positions | measure-object 'Current Value' -sum).Sum
 
 write-host ("Total Portfolio Value: {0}" -f $total_portfolio_value)
 
-foreach ($symbol in $asset_allocations.keys) {
+$assets = $asset_allocations.keys
+foreach ($position in $positions) {
+	$assets += $position.Symbol
+}
+
+foreach ($symbol in $assets | select -unique) {
     $target = $asset_allocations.Item($symbol)*$total_portfolio_value
     $position = $positions | where-object { $_.symbol -eq $symbol } | select-object -First 1
     $value = $position.'Current Value'
@@ -56,8 +60,8 @@ foreach ($symbol in $asset_allocations.keys) {
     write-host ""
     write-host ("Symbol: {0}`tCurrent Value: {1}`tTarget Value: {2}" -f $symbol, $value, $target)
     if ($target -gt $value) {
-        write-host ("BUY $ {0} OF {1}" -f ($target - $value), $symbol) -ForegroundColor Green
+        write-host ("BUY $ {0} OF {1}" -f [Math]::Round($target - $value, 2), $symbol) -ForegroundColor Green
     } else {
-        write-host ("SELL $ {0} OF {1}" -f ($value - $target), $symbol) -ForegroundColor Red
+        write-host ("SELL $ {0} OF {1}" -f [Math]::Round($value - $target, 2), $symbol) -ForegroundColor Red
     }
 }
