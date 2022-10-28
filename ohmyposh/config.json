@@ -51,19 +51,19 @@
           "type": "git"
         },
         {
-          "background": "#906cff",
-          "foreground": "#100e23",
+          "background": "#ff1100",
+          "foreground": "#193549",
           "powerline_symbol": "\ue0b0",
           "style": "powerline",
           "template": " \ue235 {{ if .Error }}{{ .Error }}{{ else }}{{ if .Venv }}{{ .Venv }} {{ end }}{{ .Full }}{{ end }} ",
           "type": "python"
         },
         {
-          "background": "#ff8080",
-          "foreground": "#ffffff",
+          "background": "#ff1100",
+          "foreground": "#193549",
           "powerline_symbol": "\ue0b0",
           "style": "powerline",
-          "template": " \ue20f ",
+          "template": " X ",
           "type": "exit"
         }
       ],
