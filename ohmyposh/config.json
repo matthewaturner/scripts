@@ -31,24 +31,39 @@
           "background": "#ff7800",
           "foreground": "#193549",
           "powerline_symbol": "\ue0b0",
+          "properties": {
+            "branch_ahead_icon": "\u2191",
+            "branch_behind_icon": "\u2193",
+            "branch_gone": "\u2262",
+            "branch_icon": "\ue0a0 ",
+            "branch_identical_icon": "\u2261",
+            "cherry_pick_icon": "\u2713 ",
+            "commit_icon": "\u25b7 ",
+            "fetch_stash_count": true,
+            "fetch_status": true,
+            "merge_icon": "\u25f4 ",
+            "no_commits_icon": "[no commits]",
+            "rebase_icon": "\u2c62 ",
+            "tag_icon": "\u25b6 "
+          },
           "style": "powerline",
-"template": "{{ .HEAD }}{{ if and (eq .Ahead 0) (eq .Behind 0) }} \u2261{{end}}{{ if gt .Ahead 0 }} \u2191{{.Ahead}}{{end}}{{ if gt .Behind 0 }} \u2193{{.Behind}}{{end}} {{ if .Working.Changed }}+{{ .Working.Added }} ~{{ .Working.Modified }} -{{ .Working.Deleted }} {{ end }}",
+          "template": " {{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} \u2502{{ end }}{{ if .Staging.Changed }} {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }} {{ .StashCount }}{{ end }} ",
           "type": "git"
         },
         {
-          "background": "#906cff",
-          "foreground": "#100e23",
+          "background": "#ff1100",
+          "foreground": "#193549",
           "powerline_symbol": "\ue0b0",
           "style": "powerline",
           "template": " \ue235 {{ if .Error }}{{ .Error }}{{ else }}{{ if .Venv }}{{ .Venv }} {{ end }}{{ .Full }}{{ end }} ",
           "type": "python"
         },
         {
-          "background": "#ff8080",
-          "foreground": "#ffffff",
+          "background": "#ff1100",
+          "foreground": "#193549",
           "powerline_symbol": "\ue0b0",
           "style": "powerline",
-          "template": " \ue20f ",
+          "template": " X ",
           "type": "exit"
         }
       ],
