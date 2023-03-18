@@ -5,3 +5,6 @@
 
 ### Re-enable
 `sudo nvram AutoBoot=%03`
+
+### Check setting
+`nvram -p`
