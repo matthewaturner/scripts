@@ -8,3 +8,6 @@
 
 ### Check setting
 `nvram -p`
+
+## Keyboard repeating
+`defaults write -g ApplePressAndHoldEnabled -bool true`
